@@ -1,0 +1,40 @@
+<ui:composition
+        xmlns:ui="http://java.sun.com/jsf/facelets"
+        xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core"
+        xmlns:p="http://primefaces.org/ui"
+        template="/WEB-INF/template/main.xhtml">
+
+    <ui:define name="main">
+        <div class="card">
+            <h:outputText value="#{msg['welcome']}"/>
+
+            <h:form id="form">
+                <p:button outcome="maintain-users.xhtml" value="Criar usuario"/>
+                <p:dataTable value="#{userController.list}" var="user" paginator="true"
+                             rows="10" rowsPerPageTemplate="5,10,30,50" id="listUsers">
+
+                    <f:facet name="header">Registered users</f:facet>
+
+                    <p:column>
+                        <f:facet name="header">username</f:facet>
+                        <h:outputText value="#{user.username}"/>
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">editar</f:facet>
+                        <p:commandButton action="#{userController.edit(user)}" type="submit" icon="pi pi-eye"
+                                         styleClass="rounded-button ui-button-secondary"/>
+
+                        <p:commandButton action="#{userController.edit(user)}" type="submit" icon="pi pi-pencil"
+                                         styleClass="rounded-button ui-button-secondary"/>
+
+                        <p:commandButton action="#{userController.delete(user)}"
+                                         icon="pi pi-times" process="@form" update="listUsers"
+                                         styleClass="rounded-button ui-button-secondary"/>
+
+                    </p:column>
+                </p:dataTable>
+            </h:form>
+        </div>
+    </ui:define>
+
+</ui:composition>

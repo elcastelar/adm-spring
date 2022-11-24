@@ -1,0 +1,40 @@
+<ui:composition
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:h="http://xmlns.jcp.org/jsf/html"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:p="http://primefaces.org/ui">
+
+    <ul id="dropdown1" class="dropdown-content">
+        <li><a href="#!">one</a></li>
+        <li><a href="#!">two</a></li>
+        <li class="divider"></li>
+        <li><a href="#!">three</a></li>
+    </ul>
+
+    <nav>
+        <div class="nav-wrapper">
+            <a href="#" class="brand-logo">Adm</a>
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+                <li>
+                    <h:link outcome="/views/user/list-users.xhtml">Users</h:link>
+                </li>
+
+                <li>
+
+                    <a class="dropdown-trigger" href="#!" data-target="dropdown1">Dropdown<i
+                            class="material-icons right">arrow_drop_down</i>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <h:panelGroup
+            styleClass="container"
+            style="background-color: #f8bbd0; color: #323232; max-width: 400px; border: 2px solid #c51162;"
+            layout="block">
+        <h:messages/>
+        <p:messages />
+    </h:panelGroup>
+
+</ui:composition>
