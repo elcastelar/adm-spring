@@ -10,31 +10,31 @@
             <b:panel title="#{msg['welcome']}" collapsible="false">
 
                 <h:form id="form">
-                    <b:button outcome="maintain-users.xhtml" value="Criar user"/>
+                    <b:button outcome="maintain-pets.xhtml" value="Criar Pet"/>
 
-                    <b:dataTable value="#{userController.list}" var="user" paginator="true"
+                    <b:dataTable value="#{petController.allPets}" var="pet" paginator="true"
                                  rows="10" rowsPerPageTemplate="5,10,30,50" id="listPets">
 
-                        <f:facet name="header">Registered users</f:facet>
+                        <f:facet name="header">Registered pets</f:facet>
 
-                        <b:dataTableColumn label="username">
-                            <h:outputText value="#{user.username}"/>
+                        <b:dataTableColumn label="name">
+                            <h:outputText value="#{pet.name}"/>
                         </b:dataTableColumn>
 
-<!--                        <b:dataTableColumn label="creation date">-->
-<!--                            <h:outputText value="#{user.creationDateTime}">-->
+<!--                        <b:dataTableColumn label="creation_date" rendered="#{pet.id != null}">-->
+<!--                            <h:outputText value="#{pet.creationDateTime}">-->
 <!--                                <f:converter converterId="com.adm.localdatetimeconverter"/>-->
 <!--                            </h:outputText>-->
 <!--                        </b:dataTableColumn>-->
 
                         <b:dataTableColumn label="actions">
-                            <b:commandButton action="#{userController.edit(user)}" type="submit">
+                            <b:commandButton action="#{petController.edit(pet)}" type="submit">
                                 <b:icon value="eye-open"/>
                             </b:commandButton>
-                            <b:commandButton action="#{userController.edit(user)}" type="submit">
+                            <b:commandButton action="#{petController.edit(pet)}" type="submit">
                                 <b:icon value="pencil"/>
                             </b:commandButton>
-                            <b:commandButton action="#{userController.delete(user)}" type="submit">
+                            <b:commandButton action="#{petController.delete(pet)}" type="submit">
                                 <b:icon value="trash"/>
                             </b:commandButton>
 

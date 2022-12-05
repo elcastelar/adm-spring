@@ -19,6 +19,7 @@ public class UserRestController {
     private final UserService userService;
 
     public UserRestController(UserService userService) {
+        log.info("Creating UserRestController!");
         this.userService = userService;
     }
 
@@ -53,5 +54,12 @@ public class UserRestController {
     public void delete(@RequestBody User user) {
         log.info("Request REST [users/delete] received!");
         userService.delete(user);
+    }
+
+    @RequestMapping(value = "/login", method = RequestMethod.POST)
+    public boolean checkCredentials(@RequestBody User user) {
+        log.info("Checking REST [users/login] received!");
+        // TODO: Return access token
+        return userService.checkUser(user);
     }
 }

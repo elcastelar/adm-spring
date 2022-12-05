@@ -4,6 +4,7 @@ import com.adm.entities.User;
 import com.adm.service.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -27,7 +28,7 @@ public class UserController {
 
     private List<User> allUsers;
 
-    private User user;
+    private User user = new User();
 
     public UserController(UserService userService) {
         log.info("UserController created!");
@@ -75,10 +76,6 @@ public class UserController {
 
     private void reloadAllUsers() {
         this.allUsers = this.userService.getList();
-    }
-
-    public UserService getUserService() {
-        return userService;
     }
 
     public User getUser() {
