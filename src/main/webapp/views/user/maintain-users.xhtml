@@ -1,24 +1,21 @@
 <ui:composition
         xmlns:ui="http://java.sun.com/jsf/facelets"
-        xmlns:h="http://java.sun.com/jsf/html" xmlns:p="http://primefaces.org/ui"
+        xmlns:h="http://java.sun.com/jsf/html" xmlns:b="http://bootsfaces.net/ui" xmlns:f="http://java.sun.com/jsf/core"
         template="/WEB-INF/template/main.xhtml">
 
     <ui:define name="main">
         <h:form>
 
-            <p:outputLabel for="username" styleClass="block">Username</p:outputLabel>
-            <p:inputText id="username" styleClass="block" value="#{userController.user.username}"/>
+            <b:label value="name" for="name"/>
+            <b:inputText id="name" value="#{userController.user.username}"/>
 
-            <p:outputLabel for="password" styleClass="block">Password</p:outputLabel>
-            <p:inputText id="password" styleClass="block" value="#{userController.user.password}"/>
+            <b:label value="creation_date"/>
+            <b:inputText id="creation_date" rendered="#{userController.user.id != null}" readonly="true"
+                         value="#{userController.user.creationDateTime}">
+                <f:converter converterId="com.adm.localdatetimeconverter"/>
+            </b:inputText>
 
-<!--            <p:outputLabel for="creation_date" styleClass="block">Creation Date</p:outputLabel>-->
-<!--            <p:inputText disabled="true" id="creation_date" styleClass="block" value="#{userController.user.creationDateTime}"/>-->
-
-<!--            <p:outputLabel for="lastlogin_date" styleClass="block">Last login Date</p:outputLabel>-->
-<!--            <p:inputText disabled="true" id="lastlogin_date" styleClass="block" value="#{userController.user.lastLoginDateTime}"/>-->
-
-            <h:commandButton action="#{userController.submit}" value="Submit"/>
+            <h:commandButton action="#{userController.submit()}" value="Submit"/>
         </h:form>
     </ui:define>
 

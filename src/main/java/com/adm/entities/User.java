@@ -6,7 +6,7 @@ import java.time.LocalDateTime;
 import java.util.Objects;
 
 @Entity(name = "tb_user")
-public class User {
+public class User implements IEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -19,7 +19,7 @@ public class User {
 
     private LocalDateTime lastLoginDateTime;
 
-
+    @Override
     public Long getId() {
         return id;
     }

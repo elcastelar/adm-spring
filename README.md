@@ -1,0 +1,1 @@
+This project must be private!The pourpose of this project is to test and sharp my skills in Java/JavaEE/JakartaEE.In this branch is being used:JSF, Hibernate, Spring and REST.Almost the entire project is configured programmaticaly.
