@@ -1,0 +1,48 @@
+<ui:composition
+        xmlns:ui="http://java.sun.com/jsf/facelets"
+        xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core"
+        xmlns:b="http://bootsfaces.net/ui"
+        template="/WEB-INF/template/main.xhtml">
+
+    <ui:define name="main">
+        <b:column span="12">
+
+            <b:panel title="#{msg['welcome']}" collapsible="false">
+
+                <h:form id="form">
+                    <b:button outcome="maintain-pets-types.xhtml" value="Criar Pet Type"/>
+
+                    <b:dataTable value="#{petTypeController.list}" var="reqtype" paginator="true"
+                                 rows="10" rowsPerPageTemplate="5,10,30,50" id="listPets">
+
+                        <f:facet name="header">Registered reqtypes</f:facet>
+
+                        <b:dataTableColumn label="name">
+                            <h:outputText value="#{reqtype.name}"/>
+                        </b:dataTableColumn>
+
+<!--                        <b:dataTableColumn label="creation_date" rendered="#{pet.id != null}">-->
+<!--                            <h:outputText value="#{pet.creationDateTime}">-->
+<!--                                <f:converter converterId="com.adm.localdatetimeconverter"/>-->
+<!--                            </h:outputText>-->
+<!--                        </b:dataTableColumn>-->
+
+                        <b:dataTableColumn label="actions">
+                            <b:commandButton action="#{petTypeController.edit(reqtype)}" type="submit">
+                                <b:icon value="eye-open"/>
+                            </b:commandButton>
+                            <b:commandButton action="#{petTypeController.edit(reqtype)}" type="submit">
+                                <b:icon value="pencil"/>
+                            </b:commandButton>
+                            <b:commandButton action="#{petTypeController.delete(reqtype)}" type="submit">
+                                <b:icon value="trash"/>
+                            </b:commandButton>
+
+                        </b:dataTableColumn>
+                    </b:dataTable>
+                </h:form>
+            </b:panel>
+        </b:column>
+    </ui:define>
+
+</ui:composition>

@@ -1,0 +1,16 @@
+<ui:composition
+        xmlns:ui="http://java.sun.com/jsf/facelets"
+        xmlns:h="http://java.sun.com/jsf/html" xmlns:b="http://bootsfaces.net/ui" xmlns:f="http://java.sun.com/jsf/core"
+        template="/WEB-INF/template/main.xhtml">
+
+    <ui:define name="main">
+        <h:form>
+
+            <b:label value="name" for="name"/>
+            <b:inputText id="name" value="#{petTypeController.entity.name}"/>
+
+            <h:commandButton action="#{petTypeController.submit}" value="Submit"/>
+        </h:form>
+    </ui:define>
+
+</ui:composition>

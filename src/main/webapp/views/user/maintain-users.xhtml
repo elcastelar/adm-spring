@@ -7,11 +7,11 @@
         <h:form>
 
             <b:label value="name" for="name"/>
-            <b:inputText id="name" value="#{userController.user.username}"/>
+            <b:inputText id="name" value="#{userController.entity.username}"/>
 
             <b:label value="creation_date"/>
-            <b:inputText id="creation_date" rendered="#{userController.user.id != null}" readonly="true"
-                         value="#{userController.user.creationDateTime}">
+            <b:inputText id="creation_date" rendered="#{userController.entity.id != null}" readonly="true"
+                         value="#{userController.entity.creationDateTime}">
                 <f:converter converterId="com.adm.localdatetimeconverter"/>
             </b:inputText>
 

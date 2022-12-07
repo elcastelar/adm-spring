@@ -8,19 +8,28 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.hibernate5.HibernateTransactionManager;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
-import org.springframework.orm.jpa.JpaTransactionManager;
-import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
-import org.springframework.orm.jpa.vendor.HibernateJpaSessionFactoryBean;
-import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
-import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
-import org.springframework.transaction.jta.JtaTransactionManager;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
-import javax.xml.crypto.Data;
 import java.util.Properties;
+
+
+/*
+ * front-end:
+ *  TODO-2: Register pet for adoption
+ *   TODO-3: Register pet for sponsorship
+ *    TODO-4: Register pet for aid
+ *     TODO-5: Feed user to help. Favorite and request to add.
+ *
+ * back-end:
+ *      TODO-6: login user
+ *       TODO-7: user roles
+ *        TODO-8: Ban user
+ *         TODO-9: Internalization. Concat db data to generate key from msg file?
+ *          TODO-10: Error page default
+ *           TODO-11: Ship?
+ *
+ * */
 
 @Configuration
 @EnableTransactionManagement
@@ -46,9 +55,10 @@ public class AppContextConfiguration {
         Properties props = new Properties();
         props.put("hibernate.dialect", "org.hibernate.dialect.PostgreSQL94Dialect");
         props.put("hibernate.connection.driver_class", "org.postgresql.Driver");
-//        props.put("hibernate.hbm2ddl.auto", "create");
+        props.put("hibernate.hbm2ddl.auto", "create");
         props.put("show_sql", true);
         props.put("connection.pool_size", 5);
+        props.put("hibernate.hbm2ddl.import_files", "initial_data.sql");
 
         LocalSessionFactoryBean sessionFactoryBean = new LocalSessionFactoryBean();
         sessionFactoryBean.setDataSource(dataSource);

@@ -4,7 +4,7 @@ import java.time.LocalDateTime;
 
 public interface IEntity {
 
-    public Long getId();
+    public Integer getId();
 
     void setCreationDateTime(LocalDateTime now);
 }
