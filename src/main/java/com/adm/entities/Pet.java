@@ -17,9 +17,7 @@ public class Pet implements IEntity {
     private Integer id;
 
     private String name;
-
-    //    private User createdBy;
-//
+    
     @ManyToOne
     @JoinColumn(name = "fk_registeredBy")
     private User registeredBy;

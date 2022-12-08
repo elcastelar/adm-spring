@@ -15,9 +15,13 @@
     <mvc:annotation-driven/>
     <tx:annotation-driven/>
 
-    <!--    <tx:annotation-driven transaction-manager="txManager" proxy-target-class="true"/>-->
-
     <!-- The configuration is done programmatically at com.adm.config -->
+
+    <!--    What is the pourpose of this ? -->
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="prefix" value="/views/"/>
+        <property name="suffix" value=".xhtml"/>
+    </bean>
 
 
 </beans>

@@ -8,13 +8,20 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.hibernate5.HibernateTransactionManager;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 import javax.sql.DataSource;
 import java.util.Properties;
 
 
-/*
+/**
+ * TODO-10: Review entities
+ * TODO-11: Review rest endpoints
+ * TODO-12: Rest token? How? Login
+ *
+ *
  * front-end:
  *  TODO-2: Register pet for adoption
  *   TODO-3: Register pet for sponsorship
@@ -73,6 +80,8 @@ public class AppContextConfiguration {
         HibernateTransactionManager transactionManager = new HibernateTransactionManager(sessionFactory);
         return transactionManager;
     }
+
+
 
 
 }

@@ -2,10 +2,14 @@ package com.adm.controller;
 
 import com.adm.entities.IEntity;
 import com.adm.service.GenericService;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
 
-public abstract class SimpleListController<S extends GenericService<E, ?>, E extends IEntity> {
+public abstract class SimpleListController<
+        S extends GenericService<E, ?>,
+        E extends IEntity> extends SimpleHelperController {
 
     private final S service;
 
@@ -17,8 +21,6 @@ public abstract class SimpleListController<S extends GenericService<E, ?>, E ext
         this.service = service;
         this.entity = buildNewEntity();
     }
-
-    public abstract String getEntityPreffix();
 
     public abstract E buildNewEntity();
 

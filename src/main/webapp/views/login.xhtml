@@ -1,0 +1,22 @@
+<ui:composition
+        xmlns:ui="http://java.sun.com/jsf/facelets"
+        xmlns:h="http://java.sun.com/jsf/html" xmlns:b="http://bootsfaces.net/ui"
+        template="/WEB-INF/template/main.xhtml">
+
+    <ui:define name="main">
+
+        <h:form>
+            <h5>User login</h5>
+            <b:label value="name" for="name"/>
+            <b:inputText id="name" value="#{loginController.user.username}"/>
+
+            <b:label value="password" for="password"/>
+            <b:inputText id="password" value="#{loginController.user.password}"/>
+
+            <h:commandButton action="#{loginController.login()}" value="Login"/>
+        </h:form>
+
+
+    </ui:define>
+
+</ui:composition>

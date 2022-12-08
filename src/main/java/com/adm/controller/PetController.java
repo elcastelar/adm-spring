@@ -18,7 +18,8 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 @Component(value = "petController")
-public class PetController {
+public class PetController extends SimpleHelperController {
+//    TODO: Create a DTO for Pet
 
     // FIXME: How to change the level at the server?
     private final Logger log = LoggerFactory.getLogger(PetController.class);
@@ -184,5 +185,10 @@ public class PetController {
 
     public void setSelectedTamperTypes(String selectedTamperTypes) {
         this.selectedTamperTypes = selectedTamperTypes;
+    }
+
+    @Override
+    public String getEntityPreffix() {
+        return "pets";
     }
 }
