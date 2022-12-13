@@ -13,7 +13,7 @@ public class UserService extends GenericService<User, UserDao> {
     }
 
     @Transactional
-    public boolean checkUser(User user) {
+    public User checkUser(User user) {
         return genericDao.checkUser(user);
     }
 }

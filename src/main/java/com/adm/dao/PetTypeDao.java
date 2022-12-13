@@ -19,6 +19,11 @@ public class PetTypeDao extends GenericDao<PetType> {
     }
 
     @Override
+    public Class<?> getImplementationClass() {
+        return PetTypeDao.class;
+    }
+
+    @Override
     public Class<PetType> getEntityClass() {
         return PetType.class;
     }

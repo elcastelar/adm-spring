@@ -1,10 +1,11 @@
--- insert into tb_pet_type (id, i18nplaceholder, name) values (nextval('tb_pet_type_id_seq'), 'pettype.dog', 'dog');
--- insert into tb_pet_type (id, i18nplaceholder, name) values (nextval('tb_pet_type_id_seq'), 'pettype.cat', 'cat');
---
--- insert into tb_req_type (id, description, i18nplaceholder) values (nextval('tb_req_type_id_seq'), 'adoption term', 'adoption.term');
--- insert into tb_req_type (id, description, i18nplaceholder) values (nextval('tb_req_type_id_seq'), 'home pictures', 'home.pictures');
---
---
---
--- insert into tb_pet_tb_req_type (tb_pet_id, reqtypeset_id) values (1, 1);
--- insert into tb_pet_tb_req_type (tb_pet_id, reqtypeset_id) values (1, 2);
+insert into tb_user_role (id, name) values (nextval('tb_user_role_id_seq'), 'admin');
+insert into tb_user_role (id, name) values (nextval('tb_user_role_id_seq'), 'user');
+insert into tb_user_role (id, name) values (nextval('tb_user_role_id_seq'), 'system');
+
+insert into tb_user (id, creationdatetime, lastlogindatetime, password, username) values (nextval('tb_user_id_seq'), null, null, '{noop}123456', 'admin');
+insert into tb_user (id, creationdatetime, lastlogindatetime, password, username) values (nextval('tb_user_id_seq'), null, null, '{noop}123456', 'user');
+insert into tb_user (id, creationdatetime, lastlogindatetime, password, username) values (nextval('tb_user_id_seq'), null, null, '{noop}123456', 'petcare');
+
+insert into tb_user_to_role (tb_user_id, userroles_id) values (1, 1);
+insert into tb_user_to_role (tb_user_id, userroles_id) values (2, 2);
+insert into tb_user_to_role (tb_user_id, userroles_id) values (3, 3);

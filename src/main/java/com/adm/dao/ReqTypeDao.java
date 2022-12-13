@@ -20,6 +20,11 @@ public class ReqTypeDao extends GenericDao<ReqType> {
     }
 
     @Override
+    public Class<?> getImplementationClass() {
+        return ReqTypeDao.class;
+    }
+
+    @Override
     public Class<ReqType> getEntityClass() {
         return ReqType.class;
     }

@@ -6,16 +6,10 @@
     <ui:define name="main">
         <h:form>
 
-            <b:label value="name" for="name"/>
+            <b:label value="#{msg['label.name']}" for="name"/>
             <b:inputText id="name" styleClass="block" value="#{reqTypeController.entity.description}"/>
 
-            <!--            <p:outputLabel for="creation_date" styleClass="block">Creation Date</p:outputLabel>-->
-            <!--            <p:inputText disabled="true" id="creation_date" styleClass="block" value="#{userController.user.creationDateTime}"/>-->
-
-            <!--            <p:outputLabel for="lastlogin_date" styleClass="block">Last login Date</p:outputLabel>-->
-            <!--            <p:inputText disabled="true" id="lastlogin_date" styleClass="block" value="#{userController.user.lastLoginDateTime}"/>-->
-
-            <h:commandButton action="#{reqTypeController.submit}" value="Submit"/>
+            <h:commandButton action="#{reqTypeController.submit}" value="#{msg['label.submit']}"/>
         </h:form>
     </ui:define>
 

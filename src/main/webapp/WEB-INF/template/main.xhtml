@@ -8,14 +8,15 @@
 <h:head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="icon" type="image/png" href="#{request.contextPath}/res/img/favicon.png"/>
 
     <h:outputStylesheet name="css/myStyle.css"/>
 
     <title>
-        <ui:insert name="pageTitle">HotelBooking</ui:insert>
+        <ui:insert name="pageTitle">Admin</ui:insert>
     </title>
 </h:head>
-<h:body>
+<h:body style="min-height: 100vh;">
 
     <ui:insert name="header">
         <ui:include src="/WEB-INF/template/header.xhtml"/>

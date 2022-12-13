@@ -6,16 +6,16 @@
     <ui:define name="main">
         <h:form>
 
-            <b:label value="name" for="name"/>
+            <b:label value="#{msg['label.name']}" for="name"/>
             <b:inputText id="name" value="#{userController.entity.username}"/>
 
-            <b:label value="creation_date"/>
-            <b:inputText id="creation_date" rendered="#{userController.entity.id != null}" readonly="true"
-                         value="#{userController.entity.creationDateTime}">
-                <f:converter converterId="com.adm.localdatetimeconverter"/>
-            </b:inputText>
+<!--            <b:label value="#{msg['label.creation.date']}"/>-->
+<!--            <b:inputText id="creation_date" rendered="#{userController.entity.id != null}" readonly="true"-->
+<!--                         value="#{userController.entity.creationDateTime}">-->
+<!--                <f:converter converterId="com.adm.localdatetimeconverter"/>-->
+<!--            </b:inputText>-->
 
-            <h:commandButton action="#{userController.submit()}" value="Submit"/>
+            <h:commandButton action="#{userController.submit()}" value="#{msg['label.submit']}"/>
         </h:form>
     </ui:define>
 

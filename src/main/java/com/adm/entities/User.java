@@ -1,9 +1,12 @@
 package com.adm.entities;
 
 
+import org.springframework.security.core.GrantedAuthority;
+
 import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.Objects;
+import java.util.Set;
 
 @Entity(name = "tb_user")
 public class User implements IEntity {
@@ -18,6 +21,36 @@ public class User implements IEntity {
     private LocalDateTime creationDateTime;
 
     private LocalDateTime lastLoginDateTime;
+
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "tb_user_to_role")
+    private Set<UserRole> userRoles;
+
+    public User() {
+    }
+
+    public User(String username, String password) {
+        this.username = username;
+        this.password = password;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        User user = (User) o;
+
+        if (!id.equals(user.id)) return false;
+        return username.equals(user.username);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = id.hashCode();
+        result = 31 * result + username.hashCode();
+        return result;
+    }
 
     @Override
     public Integer getId() {
@@ -60,18 +93,11 @@ public class User implements IEntity {
         this.lastLoginDateTime = lastLoginDateTime;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        User user = (User) o;
-
-        return Objects.equals(id, user.id);
+    public Set<UserRole> getUserRoles() {
+        return userRoles;
     }
 
-    @Override
-    public int hashCode() {
-        return id != null ? id.hashCode() : 0;
+    public void setUserRoles(Set<UserRole> userRoles) {
+        this.userRoles = userRoles;
     }
 }

@@ -7,27 +7,19 @@
     <ui:define name="main">
         <b:column span="12">
 
-            <b:panel title="#{msg['welcome']}" collapsible="false">
+            <b:panel title="#{msg['label.pettype.list']}" collapsible="false">
 
                 <h:form id="form">
-                    <b:button outcome="maintain-pets-types.xhtml" value="Criar Pet Type"/>
+                    <b:button outcome="maintain-pets-types.xhtml" value="#{msg['label.create.pettype']}"/>
 
                     <b:dataTable value="#{petTypeController.list}" var="reqtype" paginator="true"
                                  rows="10" rowsPerPageTemplate="5,10,30,50" id="listPets">
 
-                        <f:facet name="header">Registered reqtypes</f:facet>
-
-                        <b:dataTableColumn label="name">
+                        <b:dataTableColumn label="#{msg['label.name']}">
                             <h:outputText value="#{reqtype.name}"/>
                         </b:dataTableColumn>
 
-<!--                        <b:dataTableColumn label="creation_date" rendered="#{pet.id != null}">-->
-<!--                            <h:outputText value="#{pet.creationDateTime}">-->
-<!--                                <f:converter converterId="com.adm.localdatetimeconverter"/>-->
-<!--                            </h:outputText>-->
-<!--                        </b:dataTableColumn>-->
-
-                        <b:dataTableColumn label="actions">
+                        <b:dataTableColumn label="#{msg['label.actions']}">
                             <b:commandButton action="#{petTypeController.edit(reqtype)}" type="submit">
                                 <b:icon value="eye-open"/>
                             </b:commandButton>

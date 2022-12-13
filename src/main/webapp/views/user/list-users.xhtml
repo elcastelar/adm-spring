@@ -7,27 +7,19 @@
     <ui:define name="main">
         <b:column span="12">
 
-            <b:panel title="#{msg['welcome']}" collapsible="false">
+            <b:panel title="#{msg['label.users.list']}" collapsible="false">
 
                 <h:form id="form">
-                    <b:button outcome="maintain-users.xhtml" value="Criar user"/>
+                    <b:button outcome="maintain-users.xhtml" value="#{msg['label.create.user']}"/>
 
                     <b:dataTable value="#{userController.list}" var="user" paginator="true"
                                  rows="10" rowsPerPageTemplate="5,10,30,50" id="listPets">
 
-                        <f:facet name="header">Registered users</f:facet>
-
-                        <b:dataTableColumn label="username">
+                        <b:dataTableColumn label="#{msg['label.username']}">
                             <h:outputText value="#{user.username}"/>
                         </b:dataTableColumn>
 
-<!--                        <b:dataTableColumn label="creation date">-->
-<!--                            <h:outputText value="#{user.creationDateTime}">-->
-<!--                                <f:converter converterId="com.adm.localdatetimeconverter"/>-->
-<!--                            </h:outputText>-->
-<!--                        </b:dataTableColumn>-->
-
-                        <b:dataTableColumn label="actions">
+                        <b:dataTableColumn label="#{msg['label.actions']}">
                             <b:commandButton action="#{userController.edit(user)}" type="submit">
                                 <b:icon value="eye-open"/>
                             </b:commandButton>

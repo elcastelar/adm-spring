@@ -8,43 +8,27 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.hibernate5.HibernateTransactionManager;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
+import org.springframework.security.authentication.AuthenticationProvider;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.AuthenticationException;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 import javax.sql.DataSource;
 import java.util.Properties;
 
-
-/**
- * TODO-10: Review entities
- * TODO-11: Review rest endpoints
- * TODO-12: Rest token? How? Login
- *
- *
- * front-end:
- *  TODO-2: Register pet for adoption
- *   TODO-3: Register pet for sponsorship
- *    TODO-4: Register pet for aid
- *     TODO-5: Feed user to help. Favorite and request to add.
- *
- * back-end:
- *      TODO-6: login user
- *       TODO-7: user roles
- *        TODO-8: Ban user
- *         TODO-9: Internalization. Concat db data to generate key from msg file?
- *          TODO-10: Error page default
- *           TODO-11: Ship?
- *
- * */
-
 @Configuration
 @EnableTransactionManagement
+@EnableWebMvc
 public class AppContextConfiguration {
     private final Logger log = LoggerFactory.getLogger(AppContextConfiguration.class);
 
     @Bean(name = "dataSource")
     public DataSource dataSource() {
+        log.info("Creating dataSource bean!");
+
         final String userDBEnv = System.getenv("ADM_USER_DB");
         final String pwDBEnv = System.getenv("ADM_PW_DB");
         final String urlDBEnv = System.getenv("ADM_DB_URL");
@@ -59,6 +43,8 @@ public class AppContextConfiguration {
 
     @Bean(name = "sessionFactory")
     public LocalSessionFactoryBean entityManagerFactoryBean(DataSource dataSource) {
+        log.info("Creating sessionFactory bean!");
+
         Properties props = new Properties();
         props.put("hibernate.dialect", "org.hibernate.dialect.PostgreSQL94Dialect");
         props.put("hibernate.connection.driver_class", "org.postgresql.Driver");
@@ -77,11 +63,10 @@ public class AppContextConfiguration {
 
     @Bean(name = "transactionManager")
     public HibernateTransactionManager transactionManager(SessionFactory sessionFactory) {
+        log.info("Creating transactionManager bean!");
+
         HibernateTransactionManager transactionManager = new HibernateTransactionManager(sessionFactory);
         return transactionManager;
     }
-
-
-
 
 }

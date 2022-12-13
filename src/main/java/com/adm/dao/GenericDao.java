@@ -1,9 +1,12 @@
 package com.adm.dao;
 
+import com.adm.config.SecurityConfiguration;
 import com.adm.entities.IEntity;
 import com.adm.entities.User;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityTransaction;
@@ -17,6 +20,8 @@ import java.util.List;
 
 @Repository
 public abstract class GenericDao<T extends IEntity> implements IDao<T> {
+
+    protected final Logger log = LoggerFactory.getLogger(getImplementationClass());
 
     protected final SessionFactory sessionFactory;
 
@@ -65,8 +70,9 @@ public abstract class GenericDao<T extends IEntity> implements IDao<T> {
     public void create(T entity) {
         Session currSession = sessionFactory.getCurrentSession();
         EntityTransaction transaction = currSession.getTransaction();
-        entity.setCreationDateTime(LocalDateTime.now());
 
         currSession.persist(entity);
     }
+
+    public abstract Class<?> getImplementationClass();
 }

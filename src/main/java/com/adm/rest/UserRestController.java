@@ -60,6 +60,7 @@ public class UserRestController {
     public boolean checkCredentials(@RequestBody User user) {
         log.info("Checking REST [users/login] received!");
         // TODO: Return access token
-        return userService.checkUser(user);
+        return false;
+//        return userService.checkUser(user);
     }
 }

@@ -6,6 +6,7 @@ import org.hibernate.SessionFactory;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityTransaction;
+import javax.persistence.NoResultException;
 import javax.persistence.TypedQuery;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -25,13 +26,24 @@ public class UserDao extends GenericDao<User> {
         return dbEntity;
     }
 
-    public boolean checkUser(User user) {
+    @Override
+    public Class<?> getImplementationClass() {
+        return UserDao.class;
+    }
+
+    public User checkUser(User user) {
         Session currSession = sessionFactory.getCurrentSession();
         TypedQuery<User> query = currSession.createQuery("SELECT u FROM " + User.class.getName() + " u WHERE u.username = ?1 and u.password = ?2", User.class);
         query.setParameter(1, user.getUsername());
         query.setParameter(2, user.getPassword());
-        boolean b = !query.getResultList().isEmpty();
-        return b;
+        User userResult = null;
+        try {
+            userResult = query.getSingleResult();
+        } catch (NoResultException e) {
+            log.error(String.format("No entity found with username %s", user.getUsername()), e);
+        }
+
+        return userResult;
     }
 
     @Override

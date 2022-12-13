@@ -108,13 +108,19 @@
             <scope>provided</scope>
         </dependency>
 
+        <dependency>
+            <groupId>org.jboss.logging</groupId>
+            <artifactId>jboss-logging</artifactId>
+            <version>3.4.3.Final</version>
+            <scope>provided</scope>
+        </dependency>
 
         <!-- NOTE: Needed due to error on Docker container. Test with current host -->
-        <dependency>
-            <groupId>org.reactivestreams</groupId>
-            <artifactId>reactive-streams</artifactId>
-            <version>1.0.4</version>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>org.reactivestreams</groupId>-->
+<!--            <artifactId>reactive-streams</artifactId>-->
+<!--            <version>1.0.4</version>-->
+<!--        </dependency>-->
 
         <!--        <dependency>-->
         <!--            <groupId>jakarta.platform</groupId>-->

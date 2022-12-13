@@ -5,16 +5,27 @@
 
     <ui:define name="main">
 
-        <h:form>
+        <form action="#{request.contextPath}/perform_client_login" method="post">
             <h5>User login</h5>
-            <b:label value="name" for="name"/>
-            <b:inputText id="name" value="#{loginController.user.username}"/>
+            <label class="label label-default" for="username" value="name">Name</label>
+            <div class="form-group">
+                <input class="form-control" type="text" placeholder="username" name="username"/>
+            </div>
 
-            <b:label value="password" for="password"/>
-            <b:inputText id="password" value="#{loginController.user.password}"/>
+            <label class="label label-default" for="password" value="password">password</label>
+            <div class="form-group">
+                <input class="form-control" type="password" placeholder="password" name="password"/>
+            </div>
 
-            <h:commandButton action="#{loginController.login()}" value="Login"/>
-        </h:form>
+            <b:alert value="User credentials not found!" severity="danger"
+                     rendered="#{param['message'] == 'failLogin'}"/>
+
+            <b:alert value="You're successfully logout!" severity="success"
+                     rendered="#{param['message'] == 'sucsLogout'}"/>
+
+
+            <input class="btn btn-default" type="submit" value="Login"/>
+        </form>
 
 
     </ui:define>

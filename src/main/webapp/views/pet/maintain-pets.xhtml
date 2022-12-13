@@ -6,18 +6,18 @@
     <ui:define name="main">
         <h:form>
 
-            <b:label value="name" for="name"/>
+            <b:label value="#{msg['label.name']}" for="name"/>
             <b:inputText id="name" styleClass="block" value="#{petController.pet.name}"/>
 
-            <b:label for="owner" value="Owner"/>
+            <b:label for="owner" value="#{msg['label.select.owner']}"/>
             <b:selectOneMenu id="owner" value="#{petController.pet.registeredBy}" label="Select owner">
-                <f:selectItem itemLabel="Selecionar dono" itemValue="#{null}"/>
+                <f:selectItem itemLabel="#{msg['label.select.owner']}" itemValue="#{null}"/>
                 <f:selectItems value="#{petController.allUsers}" var="owner" itemLabel="#{owner.username}"
                                itemValue="#{owner}"/>
             </b:selectOneMenu>
 
-            <b:label for="petType" value="Pet Type"/>
-            <b:selectOneMenu id="petType" value="#{petController.pet.petType}" label="Select petType">
+            <b:label for="petType" value="#{msg['label.pettype']}"/>
+            <b:selectOneMenu id="petType" value="#{petController.pet.petType}" label="#{msg['label.select.pettype']}">
                 <f:selectItems value="#{petController.petTypeList}" var="petType" itemLabel="#{petType.name}"
                                itemValue="#{petType}"/>
             </b:selectOneMenu>
@@ -39,7 +39,7 @@
 
             <h:inputText value="#{petController.pet.about}"/>
 
-            <h:commandButton action="#{petController.submit}" value="Submit"/>
+            <h:commandButton action="#{petController.submit}" value="#{msg['label.submit']}"/>
         </h:form>
     </ui:define>
 

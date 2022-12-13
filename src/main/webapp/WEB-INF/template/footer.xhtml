@@ -1,14 +1,15 @@
 <ui:composition
         xmlns:ui="http://java.sun.com/jsf/facelets"
-        xmlns:h="http://java.sun.com/jsf/html">
-    <footer className="container">
-        <p className="float-right">
-            <a href="#">Back to top</a>
-        </p>
-        <p>© 2017-2018 Company, Inc. ·
-            <a href="#">Privacy</a>
+        xmlns:b="http://bootsfaces.net/ui">
+
+    <footer className="container" style="position: absolute; bottom: 0;">
+        <p>© 2022-2023 Adm-web, Inc.
             ·
-            <a href="#">Terms</a>
+            <b:navLink value="#{msg['label.privacy']}" outcome="/views/privacy.xhtml"/>
+            ·
+            <b:navLink value="#{msg['label.terms']}" outcome="/views/terms.xhtml"/>
+            ·
+            <b:navLink value="#{msg['label.about.us']}" outcome="/views/about_us.xhtml"/>
         </p>
     </footer>
 </ui:composition>

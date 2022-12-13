@@ -23,11 +23,6 @@ public class ReqType implements IEntity {
         return id;
     }
 
-    @Override
-    public void setCreationDateTime(LocalDateTime now) {
-
-    }
-
     public void setId(Integer id) {
         this.id = id;
     }
@@ -47,6 +42,4 @@ public class ReqType implements IEntity {
     public void setI18nPlaceholder(String i18nPlaceholder) {
         this.i18nPlaceholder = i18nPlaceholder;
     }
-
-
 }

@@ -6,10 +6,10 @@
     <ui:define name="main">
         <h:form>
 
-            <b:label value="name" for="name"/>
+            <b:label value="#{msg['label.name']}" for="name"/>
             <b:inputText id="name" value="#{petTypeController.entity.name}"/>
 
-            <h:commandButton action="#{petTypeController.submit}" value="Submit"/>
+            <h:commandButton action="#{petTypeController.submit}" value="#{msg['label.submit']}"/>
         </h:form>
     </ui:define>
 
