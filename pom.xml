@@ -115,26 +115,6 @@
             <scope>provided</scope>
         </dependency>
 
-        <!-- NOTE: Needed due to error on Docker container. Test with current host -->
-<!--        <dependency>-->
-<!--            <groupId>org.reactivestreams</groupId>-->
-<!--            <artifactId>reactive-streams</artifactId>-->
-<!--            <version>1.0.4</version>-->
-<!--        </dependency>-->
-
-        <!--        <dependency>-->
-        <!--            <groupId>jakarta.platform</groupId>-->
-        <!--            <artifactId>jakarta.jakartaee-api</artifactId>-->
-        <!--            <version>8.0.0</version>-->
-        <!--            <scope>provided</scope>-->
-        <!--        </dependency>-->
-
-        <!--        <dependency>-->
-        <!--            <groupId>jstl</groupId>-->
-        <!--            <artifactId>jstl</artifactId>-->
-        <!--            <version>1.2</version>-->
-        <!--        </dependency>-->
-
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-api</artifactId>

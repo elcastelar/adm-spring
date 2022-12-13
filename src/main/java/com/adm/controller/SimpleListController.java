@@ -2,8 +2,6 @@ package com.adm.controller;
 
 import com.adm.entities.IEntity;
 import com.adm.service.GenericService;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
 

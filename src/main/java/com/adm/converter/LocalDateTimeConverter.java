@@ -10,7 +10,7 @@ import java.time.format.DateTimeFormatter;
 @FacesConverter(value = "com.adm.localdatetimeconverter")
 public class LocalDateTimeConverter implements Converter<LocalDateTime> {
 
-    private DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+    private final DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
 
     @Override
     public LocalDateTime getAsObject(FacesContext facesContext, UIComponent uiComponent, String s) {
@@ -23,7 +23,7 @@ public class LocalDateTimeConverter implements Converter<LocalDateTime> {
 
     @Override
     public String getAsString(FacesContext facesContext, UIComponent uiComponent, LocalDateTime localDateTime) {
-        if (dateTimeFormatter == null) {
+        if (localDateTime == null) {
             return "";
         }
 

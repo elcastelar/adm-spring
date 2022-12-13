@@ -19,9 +19,6 @@ import java.util.stream.Collectors;
 
 @Component(value = "petController")
 public class PetController extends SimpleHelperController {
-//    TODO: Create a DTO for Pet
-
-    // FIXME: How to change the level at the server?
     private final Logger log = LoggerFactory.getLogger(PetController.class);
 
     private final PetService petService;
@@ -44,8 +41,6 @@ public class PetController extends SimpleHelperController {
 
     private Map<String, PetTamperType> petTamperTypeCache;
 
-    private Set<PetTamperType> petTamperTypes;
-
     private String selectedTamperTypes = "";
 
     private String selectedReqTypes;
@@ -63,7 +58,6 @@ public class PetController extends SimpleHelperController {
     }
 
     public String edit(Pet pet) {
-        log.info("button edit PetController clicked!");
         this.pet = pet;
 
         if (!this.pet.getReqTypeSet().isEmpty()) {
@@ -75,8 +69,6 @@ public class PetController extends SimpleHelperController {
     }
 
     public void delete(Pet pet) {
-        log.info("PetController delete called!");
-
         this.petService.delete(pet);
         this.allPets.remove(pet);
     }
@@ -86,6 +78,7 @@ public class PetController extends SimpleHelperController {
         for (String number : selectedReqTypes.split(",")) {
             newReqTypes.add(reqTypeMapCache.get(Integer.parseInt(number)));
         }
+
         Set<PetTamperType> newTamperTypes = new HashSet<>();
         for (String selected : selectedTamperTypes.split(",")) {
             newTamperTypes.add(petTamperTypeCache.get(selected));
@@ -103,8 +96,6 @@ public class PetController extends SimpleHelperController {
             this.petService.update(pet);
         }
 
-        // FIXME: When user clicks to edit a pet, but clicks on the navbar without submiting. There is a leftover
-        // FIXME: of the last entity edited.
         this.pet = new Pet();
         this.reqTypeMapCache = new HashMap<>();
 

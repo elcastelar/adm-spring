@@ -1,11 +1,8 @@
 package com.adm.entities;
 
 
-import org.springframework.security.core.GrantedAuthority;
-
 import javax.persistence.*;
 import java.time.LocalDateTime;
-import java.util.Objects;
 import java.util.Set;
 
 @Entity(name = "tb_user")

@@ -1,6 +1,5 @@
 package com.adm.dao;
 
-import com.adm.entities.Pet;
 import com.adm.entities.ReqType;
 import org.hibernate.SessionFactory;
 import org.springframework.stereotype.Repository;

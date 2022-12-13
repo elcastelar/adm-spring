@@ -63,7 +63,6 @@
         <param-value>true</param-value>
     </context-param>
 
-    <!-- PRODUCTION: Change -->
     <context-param>
         <param-name>javax.faces.PROJECT_STAGE</param-name>
         <param-value>Development</param-value>
