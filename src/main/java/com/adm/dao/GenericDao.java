@@ -22,13 +22,15 @@ public abstract class GenericDao<T extends IEntity> implements IDao<T> {
         this.sessionFactory = sessionFactory;
     }
 
+    @Override
     public List<T> getList() {
         Session currSession = sessionFactory.getCurrentSession();
         List<T> entitiesList = currSession.createQuery("SELECT e FROM " + this.getEntityClass().getName() + " e").getResultList();
         return entitiesList;
     }
 
-    public T findById(Long id) {
+    @Override
+    public T findById(Integer id) {
         Session currSession = sessionFactory.getCurrentSession();
         TypedQuery<T> query = currSession.createQuery("SELECT e FROM " + this.getEntityClass().getName() + " e WHERE e.id = ?1", this.getEntityClass());
         query.setParameter(1, id);
@@ -36,6 +38,7 @@ public abstract class GenericDao<T extends IEntity> implements IDao<T> {
         return singleResult;
     }
 
+    @Override
     public void update(T entity) {
         Session currSession = sessionFactory.getCurrentSession();
         T entityDB = currSession.find(this.getEntityClass(), entity.getId());
@@ -48,6 +51,7 @@ public abstract class GenericDao<T extends IEntity> implements IDao<T> {
 
     public abstract T updateEntity(T dbEntity, T newEntity);
 
+    @Override
     public void delete(T entity) {
         Session currSession = sessionFactory.getCurrentSession();
         if (!currSession.contains(entity)) {
@@ -57,6 +61,7 @@ public abstract class GenericDao<T extends IEntity> implements IDao<T> {
         currSession.remove(entity);
     }
 
+    @Override
     public void create(T entity) {
         Session currSession = sessionFactory.getCurrentSession();
         EntityTransaction transaction = currSession.getTransaction();

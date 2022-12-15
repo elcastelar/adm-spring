@@ -1,5 +1,6 @@
 package com.adm.config;
 
+import com.adm.rest.JwtValidatorFilter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -9,6 +10,7 @@ import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.JdbcUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.www.BasicAuthenticationFilter;
 
 import javax.sql.DataSource;
 
@@ -18,17 +20,22 @@ public class SecurityConfiguration {
 
     @Bean(name = "httpSecurityFilter")
     public SecurityFilterChain httpSecurityFilter(HttpSecurity http) throws Exception {
+        String[] allowedPublicRequests = {
+                "/javax.faces.resource/**",  // jsf resources
+                "/res/**",                   // direct access to resources
+                "/views/about_us.xhtml",
+                "/views/privacy.xhtml",
+                "/views/terms.xhtml",
+                "/restapi/**"
+        };
+
         http.authorizeRequests()
-                .antMatchers("/javax.faces.resource/**")
-                .permitAll()
-                .and()
-                .authorizeRequests()
-                .antMatchers("/res/**", "/views/about_us.xhtml", "/views/privacy.xhtml", "/views/terms.xhtml")
+                .antMatchers(allowedPublicRequests)
                 .permitAll()
                 .and()
                 .csrf().disable()
                 .formLogin()
-                .loginPage("/views/login.xhtml").permitAll()
+                .loginPage("/views/login.xhtml")
                 .loginProcessingUrl("/perform_client_login")
                 .defaultSuccessUrl("/views/user/list-users.xhtml?testando")
                 .failureUrl("/views/login.xhtml?message=failLogin")
@@ -37,10 +44,11 @@ public class SecurityConfiguration {
                 .and()
                 .logout().logoutUrl("/perform_logout")
                 .logoutSuccessUrl("/views/login.xhtml?message=sucsLogout")
-                .permitAll()
                 .and()
                 .authorizeRequests()
                 .anyRequest().authenticated();
+
+        http.addFilterAfter(new JwtValidatorFilter(), BasicAuthenticationFilter.class);
 
         return http.build();
     }

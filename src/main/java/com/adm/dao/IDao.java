@@ -6,7 +6,7 @@ public interface IDao<T> {
 
     public List<T> getList();
 
-    public T findById(Long id);
+    public T findById(Integer id);
 
     public void update(T entity);
 

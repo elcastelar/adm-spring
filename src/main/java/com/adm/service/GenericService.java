@@ -20,7 +20,7 @@ public abstract class GenericService<E extends IEntity, T extends IDao<E>> {
     }
 
     @Transactional
-    public E findById(Long id) {
+    public E findById(Integer id) {
         return genericDao.findById(id);
     }
 

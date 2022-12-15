@@ -1,0 +1,44 @@
+###
+### With valid api key
+GET http://localhost:8080/adm-web/restapi/users
+Content-Type: application/json
+
+{
+  "apiKey": "eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiJmYWY5ZWE4NGFlYzY0MDM1Yjk2NTUyMjNiNjI1NjFjYiIsImlzcyI6IkFETS1XRUIiLCJhdWQiOiJSRVNULUFQSSIsImlhdCI6MTY3MTA4Mjg1MiwibmJmIjoxNjcxMDgyODUyLCJleHAiOjE2NzExNjkyNTJ9.6rdJk-nX69ppxMd27AkkUJA4IxCRB9iUr5zSZD0g1Wk"
+}
+
+### Invalid API Key
+GET http://localhost:8080/adm-web/restapi/users
+Content-Type: application/json
+
+{
+  "apiKey": "1234567890"
+}
+
+### No API Key present
+GET http://localhost:8080/adm-web/restapi/users
+Content-Type: application/json
+
+{
+  "apiKey": "1234567890"
+}
+
+###
+GET http://localhost:8080/adm-web/restapi/users/1
+Content-Type: application/json
+
+{
+  "apiKey": "eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiJmYWY5ZWE4NGFlYzY0MDM1Yjk2NTUyMjNiNjI1NjFjYiIsImlzcyI6IkFETS1XRUIiLCJhdWQiOiJSRVNULUFQSSIsImlhdCI6MTY3MTA4Mjg1MiwibmJmIjoxNjcxMDgyODUyLCJleHAiOjE2NzExNjkyNTJ9.6rdJk-nX69ppxMd27AkkUJA4IxCRB9iUr5zSZD0g1Wk"
+}
+
+###
+POST http://localhost:8080/adm-web/restapi/users/create
+Content-Type: application/json
+
+{
+  "apiKey": "eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiJmYWY5ZWE4NGFlYzY0MDM1Yjk2NTUyMjNiNjI1NjFjYiIsImlzcyI6IkFETS1XRUIiLCJhdWQiOiJSRVNULUFQSSIsImlhdCI6MTY3MTA4Mjg1MiwibmJmIjoxNjcxMDgyODUyLCJleHAiOjE2NzExNjkyNTJ9.6rdJk-nX69ppxMd27AkkUJA4IxCRB9iUr5zSZD0g1Wk",
+  "username": "Rest-created-user",
+  "password": "{noop}123456"
+}
+
+###

@@ -2,6 +2,7 @@ package com.adm.config;
 
 import org.hibernate.SessionFactory;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.hibernate5.HibernateTransactionManager;
@@ -15,6 +16,7 @@ import java.util.Properties;
 @Configuration
 @EnableTransactionManagement
 @EnableWebMvc
+@ComponentScan(basePackages = "com.adm")
 public class AppContextConfiguration {
 
     @Bean(name = "dataSource")
